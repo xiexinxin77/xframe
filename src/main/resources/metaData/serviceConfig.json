@@ -1,0 +1,15 @@
+{
+  "serviceConfig": [
+    {
+      "serviceCode": "Y0001",
+      "serviceName": "name",
+      "serviceDescription": "name",
+      "businessList": [
+        {
+          "businessCode": "y0001",
+          "businessType": "1"
+        }
+      ]
+    }
+  ]
+}

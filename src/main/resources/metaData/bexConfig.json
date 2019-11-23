@@ -1,0 +1,12 @@
+{
+  "bexConfig": [
+    {
+      "bexCode": "Z0001",
+      "mapperInterfaceName": "x",
+      "mapperInterfaceMethodName": "y",
+      "businessType": "1",
+      "bexName": "查询客户信息",
+      "bexDescription": "描述"
+    }
+  ]
+}
