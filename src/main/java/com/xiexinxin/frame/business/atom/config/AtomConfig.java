@@ -51,4 +51,15 @@ public class AtomConfig {
     public void setAtomDescription(String atomDescription) {
         this.atomDescription = atomDescription;
     }
+
+    @Override
+    public String toString() {
+        return "AtomConfig{" +
+                "atomCode='" + atomCode + '\'' +
+                ", className='" + className + '\'' +
+                ", methodName='" + methodName + '\'' +
+                ", atomName='" + atomName + '\'' +
+                ", atomDescription='" + atomDescription + '\'' +
+                '}';
+    }
 }

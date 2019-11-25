@@ -1,6 +1,8 @@
 package com.xiexinxin.xframe;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
 import com.alibaba.fastjson.JSONArray;
+import com.xiexinxin.frame.config.ConfigLoader;
 import com.xiexinxin.xframe.dao.IDao;
 import com.xiexinxin.xframe.dao.mybatis.MybatisIDao;
 import com.xiexinxin.xframe.mapper.MapperForTest;
@@ -29,6 +31,9 @@ class XframeApplicationTests {
 
     @Autowired
     MapperForTest test;
+
+    @Autowired
+    ConfigLoader configLoader;
 
     IDao idao = new MybatisIDao();
 
@@ -62,6 +67,13 @@ class XframeApplicationTests {
 
         Object y0001 = idao.doInvoke("Y00901", params, new HashMap());
         System.out.println(y0001);
+    }
+
+    @Test
+    void configLoaderTest() {
+        System.out.println(configLoader.getAtomConfigMap());
+        System.out.println(configLoader.getBexConfigMap());
+        System.out.println(configLoader.getServiceConfigMap());
     }
 
 }

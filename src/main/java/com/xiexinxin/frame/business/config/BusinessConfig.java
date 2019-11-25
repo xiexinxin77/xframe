@@ -51,4 +51,15 @@ public class BusinessConfig {
     public void setBusinessDescription(String businessDescription) {
         this.businessDescription = businessDescription;
     }
+
+    @Override
+    public String toString() {
+        return "BusinessConfig{" +
+                "serviceCode='" + serviceCode + '\'' +
+                ", businessCode='" + businessCode + '\'' +
+                ", businessType='" + businessType + '\'' +
+                ", businessName='" + businessName + '\'' +
+                ", businessDescription='" + businessDescription + '\'' +
+                '}';
+    }
 }

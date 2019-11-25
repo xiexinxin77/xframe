@@ -52,4 +52,15 @@ public class BexConfig {
     public void setBexDescription(String bexDescription) {
         this.bexDescription = bexDescription;
     }
+
+    @Override
+    public String toString() {
+        return "BexConfig{" +
+                "bexCode='" + bexCode + '\'' +
+                ", mapperInterfaceName='" + mapperInterfaceName + '\'' +
+                ", mapperMethodName='" + mapperMethodName + '\'' +
+                ", bexName='" + bexName + '\'' +
+                ", bexDescription='" + bexDescription + '\'' +
+                '}';
+    }
 }

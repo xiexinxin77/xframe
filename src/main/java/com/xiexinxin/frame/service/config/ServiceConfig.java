@@ -46,4 +46,14 @@ public class ServiceConfig {
     public void setBusinessList(List<BusinessConfig> businessList) {
         this.businessList = businessList;
     }
+
+    @Override
+    public String toString() {
+        return "ServiceConfig{" +
+                "serviceCode='" + serviceCode + '\'' +
+                ", serviceName='" + serviceName + '\'' +
+                ", serviceDescription='" + serviceDescription + '\'' +
+                ", businessList=" + businessList +
+                '}';
+    }
 }

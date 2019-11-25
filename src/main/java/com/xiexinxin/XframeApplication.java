@@ -1,4 +1,4 @@
-package com.xiexinxin.xframe;
+package com.xiexinxin;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
