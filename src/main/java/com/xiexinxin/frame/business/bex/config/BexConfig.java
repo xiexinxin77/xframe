@@ -1,7 +1,7 @@
 package com.xiexinxin.frame.business.bex.config;
 
 /**
- *bex配置实体类
+ * bex配置实体类
  * author: xiexx
  * data: 2019/11/17
  * time: 17:02
@@ -12,6 +12,7 @@ public class BexConfig {
     private String mapperMethodName;
     private String bexName;
     private String bexDescription;
+    private String businessType;
 
     public String getBexCode() {
         return bexCode;
@@ -51,6 +52,14 @@ public class BexConfig {
 
     public void setBexDescription(String bexDescription) {
         this.bexDescription = bexDescription;
+    }
+
+    public String getBusinessType() {
+        return businessType;
+    }
+
+    public void setBusinessType(String businessType) {
+        this.businessType = businessType;
     }
 
     @Override
