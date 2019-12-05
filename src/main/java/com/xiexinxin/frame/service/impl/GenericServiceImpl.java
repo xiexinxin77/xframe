@@ -5,14 +5,13 @@ import com.xiexinxin.frame.business.IBusiness;
 import com.xiexinxin.frame.business.config.BusinessConfig;
 import com.xiexinxin.frame.business.factory.BusinessFactory;
 import com.xiexinxin.frame.config.ConfigLoader;
+import com.xiexinxin.frame.exception.XframeException;
 import com.xiexinxin.frame.modal.GenericRequest;
 import com.xiexinxin.frame.modal.GenericResult;
 import com.xiexinxin.frame.modal.GenericServiceRequest;
 import com.xiexinxin.frame.modal.GenericServiceResult;
 import com.xiexinxin.frame.service.IService;
 import com.xiexinxin.frame.service.config.ServiceConfig;
-import com.xiexinxin.frame.exception.XframeException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Iterator;
@@ -22,8 +21,11 @@ import java.util.Map;
 @Component
 public class GenericServiceImpl implements IService {
 
-    @Autowired
     private BusinessFactory businessFactory;
+
+    public GenericServiceImpl() {
+        this.businessFactory = new BusinessFactory();
+    }
 
     @Override
     public GenericServiceResult doService(GenericServiceRequest request) {

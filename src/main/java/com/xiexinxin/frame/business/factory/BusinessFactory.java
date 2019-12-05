@@ -3,28 +3,21 @@ package com.xiexinxin.frame.business.factory;
 import com.xiexinxin.frame.business.IBusiness;
 import com.xiexinxin.frame.business.bex.BexBusinessImpl;
 import com.xiexinxin.frame.exception.XframeException;
-import org.springframework.stereotype.Component;
+import com.xiexinxin.frame.holder.ApplicationContextHolder;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-@Component
 public class BusinessFactory {
     private Map<String, IBusiness> businessMap = new ConcurrentHashMap<>();
 
     public BusinessFactory() {
-        init();
-    }
-
-    private void init() {
-        businessMap.put("bex", new BexBusinessImpl());
-        // todo
     }
 
     public IBusiness getBusinessInstance(String businessType) {
         switch (businessType) {
             case "1":
-                return this.businessMap.get("bex");
+                return ApplicationContextHolder.getContext().getBean(BexBusinessImpl.class);
             default:
                 throw new XframeException("非法的businessType: " + businessType);
         }

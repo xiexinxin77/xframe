@@ -2,14 +2,11 @@ package com.xiexinxin.frame.dao.mybatis;
 
 import com.xiexinxin.frame.business.bex.config.BexConfig;
 import com.xiexinxin.frame.dao.IDao;
+import com.xiexinxin.frame.exception.BexException;
+import com.xiexinxin.frame.holder.ApplicationContextHolder;
 import com.xiexinxin.frame.modal.GenericRequest;
 import com.xiexinxin.frame.modal.GenericResult;
-import com.xiexinxin.frame.exception.BexException;
 import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.InvocationTargetException;
@@ -19,18 +16,17 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Component
-public class MybatisDaoImpl implements IDao, ApplicationContextAware {
+public class MybatisDaoImpl implements IDao {
 
     private static final Map<String, MapperInterfaceAndMapperMethod> cachedMapperMap = new ConcurrentHashMap<>();
 
-    private ApplicationContext context;
 
 //    @Autowired
 //    private SqlSessionTemplate sqlSessionTemplate;
 
     @Override
     public GenericResult doInvoke(GenericRequest genericRequest, BexConfig bexConfig) {
-        SqlSessionTemplate sqlSessionTemplate = context.getBean(SqlSessionTemplate.class);
+        SqlSessionTemplate sqlSessionTemplate = ApplicationContextHolder.getContext().getBean(SqlSessionTemplate.class);
         String bexCode = bexConfig.getBexCode();
         MapperInterfaceAndMapperMethod mapperInterfaceAndMapperMethod = null;
         Object result = null;
@@ -45,7 +41,7 @@ public class MybatisDaoImpl implements IDao, ApplicationContextAware {
             cachedMapperMap.put(bexCode, mapperInterfaceAndMapperMethod);
         }
         try {
-            result = mapperInterfaceAndMapperMethod.getMapperMethod().invoke(mapperInterfaceAndMapperMethod.getMapperInterface(), genericRequest.getRequestParams());
+            result = mapperInterfaceAndMapperMethod.getMapperMethod().invoke(mapperInterfaceAndMapperMethod.getMapper(), genericRequest.getRequestParams());
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {
@@ -78,11 +74,6 @@ public class MybatisDaoImpl implements IDao, ApplicationContextAware {
             throw new BexException("加载Mapper method失败--" + mapperMethodName);
         }
         return mapperMethod;
-    }
-
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.context = applicationContext;
     }
 
     class MapperInterfaceAndMapperMethod {
