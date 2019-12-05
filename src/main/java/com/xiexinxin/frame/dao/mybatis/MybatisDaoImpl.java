@@ -4,9 +4,12 @@ import com.xiexinxin.frame.business.bex.config.BexConfig;
 import com.xiexinxin.frame.dao.IDao;
 import com.xiexinxin.frame.modal.GenericRequest;
 import com.xiexinxin.frame.modal.GenericResult;
-import com.xiexinxin.xframe.exception.BexException;
+import com.xiexinxin.frame.exception.BexException;
 import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.InvocationTargetException;
@@ -16,15 +19,18 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Component
-public class MybatisDaoImpl implements IDao {
+public class MybatisDaoImpl implements IDao, ApplicationContextAware {
 
     private static final Map<String, MapperInterfaceAndMapperMethod> cachedMapperMap = new ConcurrentHashMap<>();
 
-    @Autowired
-    private SqlSessionTemplate sqlSessionTemplate;
+    private ApplicationContext context;
+
+//    @Autowired
+//    private SqlSessionTemplate sqlSessionTemplate;
 
     @Override
     public GenericResult doInvoke(GenericRequest genericRequest, BexConfig bexConfig) {
+        SqlSessionTemplate sqlSessionTemplate = context.getBean(SqlSessionTemplate.class);
         String bexCode = bexConfig.getBexCode();
         MapperInterfaceAndMapperMethod mapperInterfaceAndMapperMethod = null;
         Object result = null;
@@ -54,7 +60,6 @@ public class MybatisDaoImpl implements IDao {
     }
 
 
-
     private Class<?> getMapperInterfaceClazz(String mapperInterfaceName) {
         Class<?> mapperClazz = null;
         try {
@@ -73,6 +78,11 @@ public class MybatisDaoImpl implements IDao {
             throw new BexException("加载Mapper method失败--" + mapperMethodName);
         }
         return mapperMethod;
+    }
+
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        this.context = applicationContext;
     }
 
     class MapperInterfaceAndMapperMethod {
@@ -110,4 +120,5 @@ public class MybatisDaoImpl implements IDao {
             this.mapper = mapper;
         }
     }
+
 }

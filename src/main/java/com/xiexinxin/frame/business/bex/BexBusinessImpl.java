@@ -8,16 +8,20 @@ import com.xiexinxin.frame.dao.IDao;
 import com.xiexinxin.frame.dao.mybatis.MybatisDaoImpl;
 import com.xiexinxin.frame.modal.GenericRequest;
 import com.xiexinxin.frame.modal.GenericResult;
+import org.springframework.beans.BeansException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 
 import java.util.Map;
 
 /**
  * bex 服务类
  */
-public class BexBusinessImpl implements IBusiness {
+public class BexBusinessImpl implements IBusiness, ApplicationContextAware {
 
     private ConfigLoader configLoader;
     private IDao iDao;
+
 
     @Override
     public GenericResult doBusiness(GenericRequest genericRequest) {
@@ -42,5 +46,10 @@ public class BexBusinessImpl implements IBusiness {
                 break;
         }
         return iDao.doInvoke(genericRequest, bexConfig);
+    }
+
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+
     }
 }

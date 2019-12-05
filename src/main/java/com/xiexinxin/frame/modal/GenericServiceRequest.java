@@ -1,49 +1,25 @@
 package com.xiexinxin.frame.modal;
 
-import java.io.Serializable;
-import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 
-public class GenericServiceRequest implements Serializable {
-    private String code;
-    private String msg;
-    private Long runTimes;
-    private List<GenericResult> dataList;
+/**
+ * web请求参数类
+ */
+public class GenericServiceRequest extends GenericRequest {
+    protected HttpServletRequest request;
 
-    public GenericServiceRequest(String code, String msg, List<GenericResult> dataList) {
-        this.code = code;
-        this.msg =  msg;
-        this.dataList = dataList;
+    public GenericServiceRequest(HttpServletRequest request, Map<String, Object> params) {
+        super(params);
     }
 
-    public String getCode() {
-        return code;
+    public GenericServiceRequest(){}
+
+    public HttpServletRequest getRequest() {
+        return request;
     }
 
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getMsg() {
-        return msg;
-    }
-
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
-
-    public Long getRunTimes() {
-        return runTimes;
-    }
-
-    public void setRunTimes(Long runTimes) {
-        this.runTimes = runTimes;
-    }
-
-    public List<GenericResult> getDataList() {
-        return dataList;
-    }
-
-    public void setDataList(List<GenericResult> dataList) {
-        this.dataList = dataList;
+    public void setRequest(HttpServletRequest request) {
+        this.request = request;
     }
 }

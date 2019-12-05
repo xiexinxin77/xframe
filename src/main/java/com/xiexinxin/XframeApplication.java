@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan("com.xiexinxin.xframe.mapper")
+@MapperScan("com.xiexinxin.business.dao")
 public class XframeApplication {
 
     public static void main(String[] args) {

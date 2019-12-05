@@ -1,4 +1,4 @@
-package com.xiexinxin.xframe.exception;
+package com.xiexinxin.frame.exception;
 
 /**
  * bex异常类

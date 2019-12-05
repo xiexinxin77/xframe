@@ -6,16 +6,13 @@ import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.xiexinxin.frame.business.atom.config.AtomConfig;
 import com.xiexinxin.frame.business.bex.config.BexConfig;
-import com.xiexinxin.frame.business.config.BusinessConfig;
 import com.xiexinxin.frame.service.config.ServiceConfig;
-import com.xiexinxin.xframe.exception.BexException;
-import com.xiexinxin.xframe.exception.GlobalExceptionHandler;
-import org.apache.tomcat.util.http.fileupload.FileUtils;
+import com.xiexinxin.frame.exception.BexException;
+import com.xiexinxin.frame.exception.GlobalExceptionHandler;
 import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Component;
-import org.springframework.util.CollectionUtils;
 
 import java.io.IOException;
 import java.util.Collections;
@@ -41,15 +38,15 @@ public class ConfigLoader {
         init();
     }
 
-    public Map<String, BexConfig> getBexConfigMap() {
+    public static Map<String, BexConfig> getBexConfigMap() {
         return Collections.unmodifiableMap(bexConfigMap);
     }
 
-    public Map<String, ServiceConfig> getServiceConfigMap() {
+    public static Map<String, ServiceConfig> getServiceConfigMap() {
         return Collections.unmodifiableMap(serviceConfigMap);
     }
 
-    public Map<String, AtomConfig> getAtomConfigMap() {
+    public static Map<String, AtomConfig> getAtomConfigMap() {
         return Collections.unmodifiableMap(atomConfigMap);
     }
 
