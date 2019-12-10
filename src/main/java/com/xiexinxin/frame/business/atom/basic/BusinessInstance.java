@@ -6,9 +6,10 @@ import com.xiexinxin.frame.business.factory.BusinessFactory;
 import com.xiexinxin.frame.holder.ApplicationContextHolder;
 import com.xiexinxin.frame.modal.GenericRequest;
 import com.xiexinxin.frame.modal.GenericResult;
+import org.springframework.stereotype.Component;
 
 import java.util.Map;
-
+@Component
 public class BusinessInstance {
 
     public GenericResult callBusiness(String businessCode, Map requestParams, String businessType) {

@@ -8,7 +8,7 @@ package com.xiexinxin.frame.business.atom.config;
 public class AtomConfig {
     private String atomCode;
     private String className;
-    private String methodName;
+    private String classMethod;
     private String atomName;
     private String atomDescription;
 
@@ -28,12 +28,12 @@ public class AtomConfig {
         this.className = className;
     }
 
-    public String getMethodName() {
-        return methodName;
+    public String getClassMethod() {
+        return classMethod;
     }
 
-    public void setMethodName(String methodName) {
-        this.methodName = methodName;
+    public void setClassMethod(String classMethod) {
+        this.classMethod = classMethod;
     }
 
     public String getAtomName() {
@@ -57,7 +57,7 @@ public class AtomConfig {
         return "AtomConfig{" +
                 "atomCode='" + atomCode + '\'' +
                 ", className='" + className + '\'' +
-                ", methodName='" + methodName + '\'' +
+                ", methodName='" + classMethod + '\'' +
                 ", atomName='" + atomName + '\'' +
                 ", atomDescription='" + atomDescription + '\'' +
                 '}';

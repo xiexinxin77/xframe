@@ -67,7 +67,7 @@ public class AtomBusinessImpl implements IBusiness {
 
 
     private Method getAtomMethod(Class<?> atomClass, AtomConfig atomConfig) {
-        String methodName = atomConfig.getMethodName();
+        String methodName = atomConfig.getClassMethod();
         Method method = null;
         try {
             method = atomClass.getMethod(methodName, DataExchangeAssembly.class);
