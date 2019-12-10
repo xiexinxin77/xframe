@@ -1,9 +1,9 @@
 {
   "atomConfig": [
     {
-      "atomCode": "d",
-      "className": "x",
-      "classMethod": "y",
+      "atomCode": "K0001",
+      "className": "com.xiexinxin.business.atom.TestAtom",
+      "classMethod": "queryAcs",
       "businessType": "2",
       "atomName": "lll",
       "atomDescription": ""

@@ -8,6 +8,9 @@
         {
           "businessCode": "Z0001",
           "businessType": "1"
+        },{
+          "businessCode": "K0001",
+          "businessType": "2"
         }
       ]
     }
