@@ -1,28 +1,30 @@
 package com.xiexinxin.frame.modal;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class GenericServiceResult implements Serializable {
-    private String code;
+    private Integer code;
     private String msg;
     private Long runTimes;
     private List<GenericResult> dataList;
 
-    public GenericServiceResult(String code, String msg, List<GenericResult> dataList) {
+    public GenericServiceResult(Integer code, String msg, List<GenericResult> dataList) {
         this.code = code;
         this.msg = msg;
         this.dataList = dataList;
     }
 
     public GenericServiceResult() {
+        this.dataList = new ArrayList<>();
     }
 
-    public String getCode() {
+    public int getCode() {
         return code;
     }
 
-    public void setCode(String code) {
+    public void setCode(Integer code) {
         this.code = code;
     }
 
@@ -48,5 +50,15 @@ public class GenericServiceResult implements Serializable {
 
     public void setDataList(List<GenericResult> dataList) {
         this.dataList = dataList;
+    }
+
+    @Override
+    public String toString() {
+        return "GenericServiceResult{" +
+                "code='" + code + '\'' +
+                ", msg='" + msg + '\'' +
+                ", runTimes=" + runTimes +
+                ", dataList=" + dataList +
+                '}';
     }
 }

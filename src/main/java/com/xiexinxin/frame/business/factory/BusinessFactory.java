@@ -4,10 +4,11 @@ import com.xiexinxin.frame.business.IBusiness;
 import com.xiexinxin.frame.business.bex.BexBusinessImpl;
 import com.xiexinxin.frame.exception.XframeException;
 import com.xiexinxin.frame.holder.ApplicationContextHolder;
+import org.springframework.stereotype.Component;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-
+@Component
 public class BusinessFactory {
     private Map<String, IBusiness> businessMap = new ConcurrentHashMap<>();
 

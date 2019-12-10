@@ -26,6 +26,7 @@ public class MybatisDaoImpl implements IDao {
 
     @Override
     public GenericResult doInvoke(GenericRequest genericRequest, BexConfig bexConfig) {
+        long startTime = System.currentTimeMillis();
         SqlSessionTemplate sqlSessionTemplate = ApplicationContextHolder.getContext().getBean(SqlSessionTemplate.class);
         String bexCode = bexConfig.getBexCode();
         MapperInterfaceAndMapperMethod mapperInterfaceAndMapperMethod = null;
@@ -52,6 +53,10 @@ public class MybatisDaoImpl implements IDao {
         } else {
             genericResult.setDataList((List<Map>) result);
         }
+        genericResult.setFlag("true");
+        genericResult.setPrompt(bexConfig.getBexDescription());
+        long endTime = System.currentTimeMillis();
+        genericResult.setRunTimes(endTime - startTime);
         return genericResult;
     }
 

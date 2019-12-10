@@ -9,6 +9,6 @@ import java.util.Map;
 @Mapper
 public interface TestMapper {
 
-    @Select("SELECT * FROM OPP_BUSI_ACS_CFG WHERE BUSI_CODE='V0001'")
+    @Select("SELECT * FROM OPP_BUSI_ACS_CFG WHERE BUSI_CODE = #{BUSI_CODE}")
     List<Map> queryAcsInfo(Map params);
 }

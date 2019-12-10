@@ -28,11 +28,13 @@ class XframeApplicationTests {
     @Test
     void serviceTest() {
         GenericServiceRequest request = new GenericServiceRequest();
-        Map requestMap = new HashMap();
+        Map<String,Object> requestMap = new HashMap();
         requestMap.put("service", "Y0001");
+        requestMap.put("BUSI_CODE","V0001");
         request.setRequestParams(requestMap);
 //        IService service = new GenericServiceImpl();
         GenericServiceResult result = service.doService(request);
+        System.out.println(result);
     }
 //
 //    @Test

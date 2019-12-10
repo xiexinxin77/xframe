@@ -73,4 +73,14 @@ public class GenericResult implements Serializable {
     public void setDataList(List<Map> dataList) {
         this.dataList = dataList;
     }
+
+    @Override
+    public String toString() {
+        return "GenericResult{" +
+                "flag='" + flag + '\'' +
+                ", prompt='" + prompt + '\'' +
+                ", runTimes=" + runTimes +
+                ", dataList=" + dataList +
+                '}';
+    }
 }
