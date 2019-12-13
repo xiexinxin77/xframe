@@ -1,5 +1,8 @@
 package com.xiexinxin.frame.modal;
 
+import cn.hutool.json.JSON;
+import cn.hutool.json.JSONUtil;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -60,5 +63,10 @@ public class GenericServiceResult implements Serializable {
                 ", runTimes=" + runTimes +
                 ", dataList=" + dataList +
                 '}';
+    }
+
+    public String buildJSONString() {
+        JSON parse = JSONUtil.parse(this);
+        return parse.toString();
     }
 }
