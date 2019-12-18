@@ -22,4 +22,11 @@ public class GenericServiceRequest extends GenericRequest {
     public void setRequest(HttpServletRequest request) {
         this.request = request;
     }
+
+    @Override
+    public String toString() {
+        return "GenericServiceRequest{" +
+                "requestParams=" + requestParams +
+                '}';
+    }
 }

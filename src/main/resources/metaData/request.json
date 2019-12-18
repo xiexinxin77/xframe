@@ -1,0 +1,14 @@
+{
+  "REQUESTS": [
+    {
+      "PARAMS": {
+        "A": "1"
+      }
+    },
+    {
+      "PARAMS": {
+        "SERVICE": "YG00001"
+      }
+    }
+  ]
+}
